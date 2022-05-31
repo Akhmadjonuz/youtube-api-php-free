@@ -1,4 +1,20 @@
 <?php
+
+# Mualliflik huquqi saqlansin!
+# dadabayev.uz
+# +998902224311
+# telegram: @Akhmadjon
+
+# Copyright reserved!
+# dadabayev.uz
+# +998902224311
+# telegram: @Akhmadjon
+
+# Авторские права защищены!
+# dadabayev.uz
+# +998902224311
+# telegram: @Akhmadjon
+
 $get = json_decode(file_get_contents("https://api.snappea.com/v1/video/details?url=" . $_GET['url']), true);
 $ex = explode('v=', $_GET['url']);
 $fid = $_GET['fid'];
