@@ -39,9 +39,6 @@ array_push($array, ["image" => $img, "name" => $get['videoInfo']['title'], "seco
 $i = 0;
 foreach($get['videoInfo']['downloadInfoList'] as $download) {
     if($download['mime'] == 'audio' and $download['formatAlias'] == '128k') {
-        if (floor($download['partList'][0]['size'] / 1024 / 1024) <= 50) {
-        shell_exec("ffmpeg -i " . $download['partList'][0]['urlList'][0] . " -vn -ar 44100 -ac 2 -b:a 128k yt/$fid.mp3");
-        }
         array_push($array, ["audio" => $download['partList'][0]['urlList'][0], "size" => floor($download['partList'][0]['size'] / 1024 / 1024)]);
     }
     if ($download['formatExt'] == "mp4") {
