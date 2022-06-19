@@ -50,5 +50,5 @@ foreach($get['videoInfo']['downloadInfoList'] as $download) {
   
 }
 echo json_encode($array); 
-exit();
+exit;
 ?>   
