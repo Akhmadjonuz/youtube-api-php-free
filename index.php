@@ -40,7 +40,6 @@ $i = 0;
 foreach($get['videoInfo']['downloadInfoList'] as $download) {
     if($download['mime'] == 'audio' and $download['formatAlias'] == '128k') {
         if (floor($download['partList'][0]['size'] / 1024 / 1024) <= 50) {
-        // file_put_contents("yt/" . $fid . ".m4a", file_get_contents($download['partList'][0]['urlList'][0]));
         shell_exec("ffmpeg -i " . $download['partList'][0]['urlList'][0] . " -vn -ar 44100 -ac 2 -b:a 128k yt/$fid.mp3");
         }
         array_push($array, ["audio" => $download['partList'][0]['urlList'][0], "size" => floor($download['partList'][0]['size'] / 1024 / 1024)]);
@@ -48,9 +47,6 @@ foreach($get['videoInfo']['downloadInfoList'] as $download) {
     if ($download['formatExt'] == "mp4") {
         $calc = $download['partList'][0]['size'] / 1024 / 1024;
         $size = floor($calc);
-        if ($size <= 50) {
-            shell_exec("wget -O yt/" . $fid . $i . ".mp4 '" . $download['partList'][0]['urlList'][0] . "'");
-        }
         array_push($array, ["type" => $download['formatAlias'], "video" => $download['partList'][0]['urlList'][0], "size" => $size]);
         $i++;
     }
